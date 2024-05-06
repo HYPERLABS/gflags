@@ -556,7 +556,7 @@ static void FinalizeCompletionOutput(
   if (lines_so_far < max_desired_lines &&
       !notable_flags->module_flags.empty()) {
     DisplayInfoGroup group = {
-        "-* Matching module flags *-",
+        "",//"-* Matching module flags *-",
         "===========================",
         &notable_flags->module_flags };
     lines_so_far += group.SizeInLines();
@@ -595,7 +595,8 @@ static void FinalizeCompletionOutput(
     RetrieveUnusedFlags(matching_flags, *notable_flags, &obscure_flags);
     if (!obscure_flags.empty()) {
       DisplayInfoGroup group = {
-          "-* Other flags *-",
+          //"-* Other flags *-",
+          "",
           "",
           &obscure_flags };
       lines_so_far += group.SizeInLines();
@@ -614,7 +615,7 @@ static void FinalizeCompletionOutput(
       ++it, --indent) {
     OutputSingleGroupWithLimit(
         *it->group,  // group
-        string(indent, ' '),  // line indentation
+        string(0, ' '),  //string(indent, ' '), // line indentation
         string(it->header),  // header
         string(it->footer),  // footer
         perfect_match_found,  // long format

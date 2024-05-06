@@ -87,7 +87,7 @@ using std::vector;
 //    API exposes static info about a flag.
 // --------------------------------------------------------------------
 
-static const int kLineLength = 80;
+static const int kLineLength = 200; // Used to be 80, -- Custom change, nice help message
 
 static void AddString(const string& s,
                       string* final_string, int* chars_in_line) {
@@ -281,10 +281,10 @@ static void ShowUsageWithFlagsMatching(const char *argv0,
       if (flag->filename != last_filename) {                      // new file
         if (Dirname(flag->filename) != Dirname(last_filename)) {  // new dir!
           if (!first_directory)
-            fprintf(stdout, "\n\n");   // put blank lines between directories
+            //fprintf(stdout, "\n\n");   // put blank lines between directories -- Commented out ,Custom change, nice help message
           first_directory = false;
         }
-        fprintf(stdout, "\n  Flags from %s:\n", flag->filename.c_str());
+        //fprintf(stdout, "\n  Flags from %s:\n", flag->filename.c_str()); -- Commented out, Custom change, nice help message
         last_filename = flag->filename;
       }
       // Now print this flag

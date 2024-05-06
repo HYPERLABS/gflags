@@ -1483,6 +1483,18 @@ void GetAllFlags(vector<CommandLineFlagInfo>* OUTPUT) {
   registry->Lock();
   for (FlagRegistry::FlagConstIterator i = registry->flags_.begin();
        i != registry->flags_.end(); ++i) {
+    if (strcmp(i->second->name(), "undefok") == 0) continue;  // -- Added
+    if (strcmp(i->second->name(), "tab_completion_columns") == 0) continue;  // -- Added
+    if (strcmp(i->second->name(), "tab_completion_word") == 0) continue;  // -- Added
+    if (strcmp(i->second->name(), "tryfromenv")== 0) continue;  // -- Added
+    if (strcmp(i->second->name(), "fromenv") == 0) continue;  // -- Added
+    if (strcmp(i->second->name(), "help") == 0) continue;  // -- Added
+    if (strcmp(i->second->name(), "helpfull")== 0) continue;  // -- Added
+    if (strcmp(i->second->name(), "helpmatch") == 0) continue;  // -- Added
+    if (strcmp(i->second->name(), "helpon") == 0) continue;  // -- Added
+    if (strcmp(i->second->name(), "helppackage") == 0) continue;  // -- Added
+    if (strcmp(i->second->name(), "helpshort") == 0) continue;  // -- Added
+    if (strcmp(i->second->name(), "helpxml") == 0) continue;  // -- Added
     CommandLineFlagInfo fi;
     i->second->FillCommandLineFlagInfo(&fi);
     OUTPUT->push_back(fi);
